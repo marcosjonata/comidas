@@ -1,131 +1,37 @@
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Receitas Deliciosas - Prato Principal</title>
+    <title>Avaliação de Compras Shein</title>
 </head>
+
 <body>
-    <h2>Entradas</h2>
-    <!-- Receita do Prato principal 1 -->
-    <!-- inclua imagens -->
-    <div class="receita">
-        <h2>Mousse de Frutas</h2>
-        <img src="download (7).jpg"alt="Mousse DE FRUTAS">
-        <div class="container">
-        <p>O mousse de frutas é uma sobremesa leve e deliciosa que encanta os amantes de doces ao redor do mundo. Feito com uma mistura cremosa de frutas frescas, geralmente purê de frutas, açúcar, gelatina e creme de leite, essa sobremesa é uma explosão de sabores e cores.
+    <h1>Avalie sua Compra na Shein</h1>
+    <p>Por favor, nos dê sua opinião sobre sua experiência de compra na Shein.</p>
 
-            Uma das maravilhas do mousse de frutas é a sua versatilidade. Você pode escolher uma variedade de frutas, como morangos, manga, maracujá ou framboesas, dependendo da estação e da sua preferência pessoal. Essas frutas são transformadas em um purê suave e doce, que é então combinado com a suavidade do creme de leite e a firmeza da gelatina. O resultado é uma sobremesa incrivelmente aveludada que derrete na boca.
-            
-            Além do sabor incrível, o mousse de frutas também é uma festa para os olhos. Com suas cores vibrantes e textura sedosa, ele é frequentemente usado para decorar mesas em celebrações especiais, adicionando um toque de elegância e frescor ao ambiente.
-            
-            O mousse de frutas não é apenas uma sobremesa, é uma experiência sensorial completa. Cada colherada é uma jornada de sabores, desde a doçura das frutas até a suavidade do creme. É uma sobremesa que nos lembra da beleza e diversidade das frutas naturais, enquanto nos proporciona um momento de indulgência doce e satisfatória.
-            </p>
-        </div>
-    </div>
-    <style>
-    /* Estilos gerais */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 2;
-            padding: 0;
-            background-image: url(bing.jpg);
-            background-repeat: no-repeat;
-            background-size: 1320px 1320px;
-              }
-        
-        /* Estilos do cabeçalho */
-        header {
-            background-color: #3fa583;
-            color: rgb(243, 192, 53);
-            /*valores superior e inferior, seguido de valores da direita e esquerda.*/
-            padding: 20px 0;
-            text-align: center;
-        }
-        
-        header h1 {
-            margin: 0;
-        }
-        
-        nav ul {
-            padding: 0;
-        }
-        
-        nav li {
-            display: inline;
-            margin-right: 20px;
-        }
-        
-        nav a {
-            text-decoration: none;
-            color: rgb(0, 0, 0);
-        }
-        
-        /* Estilos das seções */
-        section {
-            padding: 40px 0;
-            text-align: center;
-        }
-        
-        section h2 {
-            font-size: 28px;
-            /*margin inferior*/
-            margin-bottom: 20px;
-        }
-        
-        /* Estilos das receitas */
-        .receita {
-            background-color: #0c885f;
-            border: 1px solid rgb(94, 91, 91);
-            padding: 20px;
-            margin: 20px;
-            border-radius: 5px;
-        }
-        
-        .receita h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        h1{
-            color: rgb(73, 73, 73);
-        }
-        h2{
-            color: (73, 73, 73);
-            text-align: center;
-        
-        }
-        p{
-            color: (73, 73, 73);
-        }
-    /* Estilos responsivos */
-    @media screen and (max-width: 768px){.produto-container{
-        width: 100%;
-        flex-direction: column;
-    }
-    }
-            /* Estilos responsivos aqui */
-        }
-        
-        @media screen and (min-width: 769px) {
-            /* Estilos responsivos aqui */
-        }
-        .container {  
-    display: grid;  
-    grid-template-columns: repeat(3, 100px);  
-    grid-template-rows: repeat(2, 50px);  
-}
-    </style>
+    <form action="processar-avaliacao.php" method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required><br><br>
 
-    <!-- Receita do prato principal 2 -->
-    <!-- inclua imagens -->
-    <div class="receita">
-        <h2>Pudim</h2>
-        <img src="download (5).jpg"alt="Pudim"> 
-        <div id="estilo">
-         <p>Ah, pudim é uma delícia que faz o coração de muita gente bater mais forte, não é? Esse doce maravilhoso tem uma textura suave e um sabor incrivelmente gostoso. Feito geralmente com leite condensado, ovos, leite e açúcar caramelizado, o pudim é uma sobremesa clássica que conquista paladares ao redor do mundo.
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required><br><br>
 
-            O que torna o pudim ainda mais especial é a sua versatilidade. Existem diversas variações, desde o pudim tradicional até versões mais ousadas, como pudim de chocolate, pudim de leite condensado com coco ou até mesmo pudim de pão. É um daqueles pratos que pode ser apreciado em diferentes ocasiões, desde festas de família até momentos mais íntimos de indulgência.
-             </p>
-    </div>
+        <label for="avaliacao">Avaliação:</label>
+        <select id="avaliacao" name="avaliacao" required>
+            <option value="excelente">Excelente</option>
+            <option value="bom">Bom</option>
+            <option value="regular">Regular</option>
+            <option value="ruim">Ruim</option>
+        </select><br><br>
+
+        <label for="comentario">Comentário:</label><br>
+        <textarea id="comentario" name="comentario" rows="4" cols="50" required></textarea><br><br>
+
+        <input type="submit" value="Enviar Avaliação">
+    </form>
 </body>
+
 </html>
