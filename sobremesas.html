@@ -20,8 +20,20 @@
             background-color: black;
             color: white;
             padding: 20px;
-            font-size: 24px;
+            font-size: 36px;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .decoracao {
+            font-size: 48px;
+            color: yellow;
+        }
+
+        .decoracao span {
+            margin-right: 10px;
         }
 
         .avaliacao-container {
@@ -45,6 +57,7 @@
         .dinheiro {
             color: yellow;
             font-weight: bold;
+            font-size: 24px;
         }
 
         .comentario {
@@ -84,7 +97,12 @@
             cursor: pointer;
             border-radius: 5px;
         }
-        
+
+        .estrela {
+            color: white;
+            cursor: pointer;
+        }
+
         .estrela-clicada {
             color: yellow;
         }
@@ -93,10 +111,13 @@
 
 <body>
     <header>
-        Shein
+        <div class="decoracao">
+            <span>&#10084;</span>Shein<span>&#9733;</span>
+        </div>
     </header>
 
     <div class="avaliacao-container">
+        <span class="dinheiro" id="valor">R$ 0.00</span>
         <div class="avaliacao">
             <img class="imagem" src="IMG_2199.jpeg" alt="Roupa 1">
             <div class="texto">
@@ -107,11 +128,11 @@
 
         <h3>Sua Avaliação:</h3>
         <div>
-            <button onclick="avaliar(1)" id="estrela1">★</button>
-            <button onclick="avaliar(2)" id="estrela2">★</button>
-            <button onclick="avaliar(3)" id="estrela3">★</button>
-            <button onclick="avaliar(4)" id="estrela4">★</button>
-            <button onclick="avaliar(5)" id="estrela5">★</button>
+            <span class="estrela" onclick="avaliar(1)">★</span>
+            <span class="estrela" onclick="avaliar(2)">★</span>
+            <span class="estrela" onclick="avaliar(3)">★</span>
+            <span class="estrela" onclick="avaliar(4)">★</span>
+            <span class="estrela" onclick="avaliar(5)">★</span>
         </div>
 
         <div class="comentario">
@@ -122,8 +143,6 @@
             <button onclick="enviarAvaliacao()">Enviar Avaliação</button>
         </div>
 
-        <span class="dinheiro" id="valor">R$ 0.00</span>
-        
         <div>
             <a href="link-para-saque" class="saque-button">Saque Agora Mesmo</a>
         </div>
@@ -131,7 +150,7 @@
 
     <!-- Botão flutuante do WhatsApp -->
     <a class="whatsapp-button" href="https://wa.me/+5531983712164" target="_blank">
-        <img src="IMG_2202.png" alt="WhatsApp">
+        <img src="whatsapp-icon.png" alt="WhatsApp">
         Entrar em Contato
     </a>
 
@@ -141,20 +160,15 @@
 
         function avaliar(estrelas) {
             if (!avaliacaoEnviada) {
-                // Adiciona a classe para mudar a cor da estrela clicada
+                // Muda a cor das estrelas clicadas
                 for (let i = 1; i <= 5; i++) {
-                    const estrela = document.getElementById(`estrela${i}`);
+                    const estrela = document.querySelector(`.estrela:nth-child(${i})`);
                     if (i <= estrelas) {
                         estrela.classList.add("estrela-clicada");
                     } else {
                         estrela.classList.remove("estrela-clicada");
                     }
                 }
-
-                alert("Avaliação enviada! Você ganhou R$20,00.");
-                dinheiro += 20;
-                document.getElementById("valor").textContent = `R$ ${dinheiro.toFixed(2)}`;
-                avaliacaoEnviada = true;
             } else {
                 alert("Você já enviou sua avaliação. Aguarde a próxima avaliação para ganhar mais dinheiro.");
             }
@@ -162,12 +176,12 @@
 
         function enviarAvaliacao() {
             if (!avaliacaoEnviada) {
-                alert("Por favor, clique nas estrelas para enviar sua avaliação.");
-            } else {
-                // Lógica para enviar a avaliação para o servidor, se necessário
-                alert("Avaliação enviada! Você ganhou R$5,00.");
-                dinheiro += 5;
+                alert("Avaliação enviada! Você ganhou R$20,00.");
+                dinheiro += 20;
                 document.getElementById("valor").textContent = `R$ ${dinheiro.toFixed(2)}`;
+                avaliacaoEnviada = true;
+            } else {
+                alert("Você já enviou sua avaliação. Aguarde a próxima avaliação para ganhar mais dinheiro.");
             }
         }
     </script>
