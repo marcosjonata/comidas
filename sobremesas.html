@@ -71,6 +71,23 @@
             height: 30px;
             margin-right: 10px;
         }
+
+        .saque-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        .estrela-clicada {
+            color: yellow;
+        }
     </style>
 </head>
 
@@ -90,11 +107,11 @@
 
         <h3>Sua Avaliação:</h3>
         <div>
-            <button onclick="avaliar(1)">★</button>
-            <button onclick="avaliar(2)">★</button>
-            <button onclick="avaliar(3)">★</button>
-            <button onclick="avaliar(4)">★</button>
-            <button onclick="avaliar(5)">★</button>
+            <button onclick="avaliar(1)" id="estrela1">★</button>
+            <button onclick="avaliar(2)" id="estrela2">★</button>
+            <button onclick="avaliar(3)" id="estrela3">★</button>
+            <button onclick="avaliar(4)" id="estrela4">★</button>
+            <button onclick="avaliar(5)" id="estrela5">★</button>
         </div>
 
         <div class="comentario">
@@ -104,14 +121,17 @@
 
             <button onclick="enviarAvaliacao()">Enviar Avaliação</button>
         </div>
-        
-        <h3>Seu saldo atual:</h3>
+
         <span class="dinheiro" id="valor">R$ 0.00</span>
+        
+        <div>
+            <a href="link-para-saque" class="saque-button">Saque Agora Mesmo</a>
+        </div>
     </div>
 
     <!-- Botão flutuante do WhatsApp -->
     <a class="whatsapp-button" href="https://wa.me/+5531983712164" target="_blank">
-        <img src="whatsapp-icon.png" alt="WhatsApp">
+        <img src="IMG_2202.png" alt="WhatsApp">
         Entrar em Contato
     </a>
 
@@ -121,6 +141,16 @@
 
         function avaliar(estrelas) {
             if (!avaliacaoEnviada) {
+                // Adiciona a classe para mudar a cor da estrela clicada
+                for (let i = 1; i <= 5; i++) {
+                    const estrela = document.getElementById(`estrela${i}`);
+                    if (i <= estrelas) {
+                        estrela.classList.add("estrela-clicada");
+                    } else {
+                        estrela.classList.remove("estrela-clicada");
+                    }
+                }
+
                 alert("Avaliação enviada! Você ganhou R$20,00.");
                 dinheiro += 20;
                 document.getElementById("valor").textContent = `R$ ${dinheiro.toFixed(2)}`;
@@ -131,10 +161,14 @@
         }
 
         function enviarAvaliacao() {
-            // Lógica para enviar a avaliação para o servidor, se necessário
-            alert("Avaliação enviada! Você ganhou R$5,00.");
-            dinheiro += 5;
-            document.getElementById("valor").textContent = `R$ ${dinheiro.toFixed(2)}`;
+            if (!avaliacaoEnviada) {
+                alert("Por favor, clique nas estrelas para enviar sua avaliação.");
+            } else {
+                // Lógica para enviar a avaliação para o servidor, se necessário
+                alert("Avaliação enviada! Você ganhou R$5,00.");
+                dinheiro += 5;
+                document.getElementById("valor").textContent = `R$ ${dinheiro.toFixed(2)}`;
+            }
         }
     </script>
 </body>
