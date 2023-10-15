@@ -6,21 +6,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avaliação de Roupas Shein</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .stars span {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .stars span.star-checked {
+            color: #ffc107;
+        }
+
+        .comment-box {
+            margin-top: 20px;
+        }
+
+        #comentario {
+            width: 100%;
+            height: 150px;
+        }
+
+        .saldo {
+            font-weight: bold;
+        }
+
+        .saque-btn {
+            background-color: #28a745;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Shein</a>
-    </nav>
+    <div class="header">
+        <h1>Avaliação de Roupas Shein</h1>
+    </div>
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
                 <div class="card">
                     <img src="IMG_2199.jpeg" class="card-img-top" alt="Roupa 1">
                     <div class="card-body">
-                        <h5 class="card-title">Avaliação de Roupas da Shein</h5>
-                        <p class="card-text">Avalie as roupas da Shein e ganhe dinheiro!</p>
+                        <h5 class="card-title">Avalie esta roupa da Shein</h5>
                         <div class="stars mb-3">
                             <span class="star" onclick="avaliar(1)">★</span>
                             <span class="star" onclick="avaliar(2)">★</span>
@@ -28,17 +80,20 @@
                             <span class="star" onclick="avaliar(4)">★</span>
                             <span class="star" onclick="avaliar(5)">★</span>
                         </div>
-                        <div class="form-group">
+                        <div class="comment-box">
                             <label for="comentario">Deixe seu Comentário:</label>
-                            <textarea class="form-control" id="comentario" rows="4"></textarea>
+                            <textarea class="form-control" id="comentario"></textarea>
                         </div>
-                        <button type="button" class="btn btn-primary btn-block" onclick="enviarAvaliacao()">Enviar Avaliação</button>
+                        <button class="btn btn-primary btn-block mt-3" onclick="enviarAvaliacao()">Enviar Avaliação</button>
                         <p class="mt-3">Saldo: <span id="saldo">R$ 0.00</span></p>
-                        <a href="link-para-saque" class="btn btn-success btn-block">Saque Agora Mesmo</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <button class="saque-btn" onclick="realizarSaque()">Saque Agora</button>
     </div>
 
     <script>
@@ -47,7 +102,14 @@
 
         function avaliar(estrelas) {
             if (!avaliacaoEnviada) {
-                // Lógica de avaliação
+                const stars = document.querySelectorAll('.stars span');
+                stars.forEach((star, index) => {
+                    if (index < estrelas) {
+                        star.classList.add('star-checked');
+                    } else {
+                        star.classList.remove('star-checked');
+                    }
+                });
             } else {
                 alert("Você já enviou sua avaliação. Aguarde a próxima avaliação para ganhar mais dinheiro.");
             }
@@ -62,6 +124,11 @@
             } else {
                 alert("Você já enviou sua avaliação. Aguarde a próxima avaliação para ganhar mais dinheiro.");
             }
+        }
+
+        function realizarSaque() {
+            // Lógica para saque, redirecionar para a página de saque ou mostrar informações sobre o saque.
+            alert("Saque realizado com sucesso!");
         }
     </script>
 
