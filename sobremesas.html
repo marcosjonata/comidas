@@ -1,101 +1,126 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação de Roupas Shein</title>
     <style>
         /* Estilos do seu fundo e outros estilos, se necessário */
         body {
             font-family: Arial, sans-serif;
-            background-image: url('IMG_2198.jpeg'); /* Substitua 'fundo.jpg' pelo caminho da sua imagem de fundo */
-            background-size: cover;
-            background-position: center;
+            background-color: black;
+            color: white;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: white;
-        }
-
-        #shein-logo {
-            font-size: 36px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        #avaliacao-container {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 10px;
             text-align: center;
+            position: relative;
         }
 
-        #avaliacao-texto {
+        header {
+            background-color: black;
+            color: white;
+            padding: 20px;
             font-size: 24px;
-            margin-bottom: 20px;
+            font-weight: bold;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1;
         }
 
-        .estrela {
-            color: #f3c035;
-            font-size: 36px;
-            cursor: pointer;
-            transition: transform 0.2s;
+        .avaliacao-container {
+            margin: 80px 0; /* Espaço superior para evitar sobreposição com o cabeçalho */
+            padding: 20px;
+            text-align: center;
+            z-index: 0;
         }
 
-        .estrela:hover {
-            transform: scale(1.2);
+        .imagem {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-right: 20px;
         }
 
-        #quantia {
-            font-size: 28px;
-            margin-top: 20px;
+        .avaliacao {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
+        .whatsapp-button img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .whatsapp-button a {
+            color: white;
+            text-decoration: none;
         }
     </style>
-    <script>
-        let quantia = 0;
-
-        function avaliar(estrelas) {
-            quantia += estrelas * 20;
-            document.getElementById("quantia").textContent = `Você ganhou: R$ ${quantia.toFixed(2)}`;
-        }
-    </script>
 </head>
 
 <body>
-    <div id="shein-logo">Shein</div>
-    <div id="avaliacao-container">
-        <div id="avaliacao-texto">Avalie suas compras na Shein:</div>
-        
-        <!-- Avaliação da primeira roupa -->
-        <div>
-            <span class="estrela" onclick="avaliar(1)">★</span>
-            <span class="estrela" onclick="avaliar(2)">★</span>
-            <span class "estrela" onclick="avaliar(3)">★</span>
-            <span class="estrela" onclick="avaliar(4)">★</span>
-            <span class="estrela" onclick="avaliar(5)">★</span>
-        </div>
-        
-        <!-- Adicione a imagem da primeira roupa aqui -->
-        <img src="IMG_2199.jpeg" alt="Primeira Roupa">
-        
-        <!-- Avaliação da segunda roupa -->
-        <div>
-            <span class="estrela" onclick="avaliar(1)">★</span>
-            <span class="estrela" onclick="avaliar(2)">★</span>
-            <span class="estrela" onclick="avaliar(3)">★</span>
-            <span class="estrela" onclick="avaliar(4)">★</span>
-            <span class="estrela" onclick="avaliar(5)">★</span>
-        </div>
-        
-        <!-- Adicione a imagem da segunda roupa aqui -->
-        <img src="IMG_2200.jpeg" alt="Segunda Roupa">
+    <header>
+        Shein
+    </header>
 
-        <div id="quantia">Você ganhou: R$ 0.00</div>
+    <div class="avaliacao-container">
+        <div class="avaliacao">
+            <img class="IMG_2199.jpeg" src="caminho-da-imagem-roupa1.jpg" alt="Roupa 1">
+            <div class="texto">
+                <h2>Avaliação de Roupas da Shein</h2>
+                <p>Avalie as roupas da Shein e ganhe dinheiro!</p>
+            </div>
+        </div>
+
+        <!-- Adicione mais roupas aqui -->
+        <!-- Exemplo: -->
+        <!-- <img class="imagem" src="caminho-da-imagem-roupa2.jpg" alt="Roupa 2"> -->
+
+        <h3>Sua Avaliação:</h3>
+        <span class="avaliacao" id="valor">R$ 0.00</span>
+
+        <div>
+            <button onclick="avaliar(1)">★</button>
+            <button onclick="avaliar(2)">★</button>
+            <button onclick="avaliar(3)">★</button>
+            <button onclick="avaliar(4)">★</button>
+            <button onclick="avaliar(5)">★</button>
+        </div>
     </div>
+
+    <!-- Botão flutuante do WhatsApp -->
+    <div class="whatsapp-button">
+        <a href="https://wa.me/+5531983712164" target="_blank">
+            <img src="IMG_2202.png" alt="WhatsApp">
+            Entrar em Contato
+        </a>
+    </div>
+
+    <script>
+        let dinheiro = 0;
+
+        function avaliar(estrelas) {
+            dinheiro += estrelas * 20;
+            document.getElementById("valor").textContent = `R$ ${dinheiro.toFixed(2)}`;
+        }
+    </script>
 </body>
 
 </html>
