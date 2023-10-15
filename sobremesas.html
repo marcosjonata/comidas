@@ -23,8 +23,10 @@
             margin-top: 50px;
         }
 
-        .card {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .image-card {
+            width: 200px;
+            margin: 20px;
+            cursor: pointer;
         }
 
         .stars span {
@@ -67,13 +69,13 @@
     </div>
 
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <img src="IMG_2199.jpeg" class="card-img-top" alt="Roupa 1">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="image-card">
+                    <img src="imagem1.jpg" class="card-img-top" alt="Roupa 1">
                     <div class="card-body">
-                        <h5 class="card-title">Avalie esta roupa da Shein</h5>
-                        <div class="stars mb-3">
+                        <h5 class="card-title">Roupa 1</h5>
+                        <div class="stars">
                             <span class="star" onclick="avaliar(1)">★</span>
                             <span class="star" onclick="avaliar(2)">★</span>
                             <span class="star" onclick="avaliar(3)">★</span>
@@ -84,10 +86,22 @@
                             <label for="comentario">Deixe seu Comentário:</label>
                             <textarea class="form-control" id="comentario"></textarea>
                         </div>
-                        <button class="btn btn-primary btn-block mt-3" onclick="enviarAvaliacao()">Enviar Avaliação</button>
-                        <p class="mt-3">Saldo: <span id="saldo">R$ 0.00</span></p>
                     </div>
                 </div>
+            </div>
+            <div class="col-md-4">
+                <!-- Repita este bloco para outras imagens -->
+            </div>
+            <div class="col-md-4">
+                <!-- Repita este bloco para outras imagens -->
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Avaliação da Roupa</h5>
+                <button class="btn btn-primary" onclick="enviarAvaliacao()">Enviar Avaliação</button>
+                <p class="mt-3">Saldo: <span id="saldo">R$ 0.00</span></p>
             </div>
         </div>
     </div>
