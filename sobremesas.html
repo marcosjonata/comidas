@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        /* Estilos do seu fundo e outros estilos, se necessário */
         body {
             font-family: Arial, sans-serif;
             background-image: url('fundo.jpg'); /* Substitua 'fundo.jpg' pelo caminho da sua imagem de fundo */
@@ -18,6 +19,12 @@
             align-items: center;
             height: 100vh;
             color: white;
+        }
+
+        #shein-logo {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
         }
 
         #avaliacao-container {
@@ -52,15 +59,30 @@
         let quantia = 0;
 
         function avaliar(estrelas) {
-            quantia += estrelas;
+            quantia += estrelas * 20;
             document.getElementById("quantia").textContent = `Você ganhou: R$ ${quantia.toFixed(2)}`;
         }
     </script>
 </head>
 
 <body>
+    <div id="shein-logo">Shein</div>
     <div id="avaliacao-container">
-        <div id="avaliacao-texto">Avalie sua compra na Shein:</div>
+        <div id="avaliacao-texto">Avalie suas compras na Shein:</div>
+        
+        <!-- Avaliação da primeira roupa -->
+        <div>
+            <span class="estrela" onclick="avaliar(1)">★</span>
+            <span class="estrela" onclick="avaliar(2)">★</span>
+            <span class "estrela" onclick="avaliar(3)">★</span>
+            <span class="estrela" onclick="avaliar(4)">★</span>
+            <span class="estrela" onclick="avaliar(5)">★</span>
+        </div>
+        
+        <!-- Adicione a imagem da primeira roupa aqui -->
+        <img src="roupa1.jpg" alt="Primeira Roupa">
+        
+        <!-- Avaliação da segunda roupa -->
         <div>
             <span class="estrela" onclick="avaliar(1)">★</span>
             <span class="estrela" onclick="avaliar(2)">★</span>
@@ -68,11 +90,12 @@
             <span class="estrela" onclick="avaliar(4)">★</span>
             <span class="estrela" onclick="avaliar(5)">★</span>
         </div>
+        
+        <!-- Adicione a imagem da segunda roupa aqui -->
+        <img src="roupa2.jpg" alt="Segunda Roupa">
+
         <div id="quantia">Você ganhou: R$ 0.00</div>
     </div>
-
-    <!-- Seu código para inserir as imagens das roupas aqui -->
-
 </body>
 
 </html>
