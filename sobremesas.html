@@ -10,10 +10,12 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
         }
 
         .header {
-            background-color: #343a40;
+            background-color: #ec5252;
             color: #ffffff;
             padding: 20px 0;
             text-align: center;
@@ -47,17 +49,22 @@
             height: 150px;
         }
 
-        .saldo {
-            font-weight: bold;
+        .footer {
+            background-color: #343a40;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
 
-        .saque-btn {
-            background-color: #28a745;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 18px;
+        .footer-options {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .footer-option {
             cursor: pointer;
         }
     </style>
@@ -65,7 +72,7 @@
 
 <body>
     <div class="header">
-        <h1>Avaliação de Roupas Shein</h1>
+        <h1>Shein - Avaliação de Roupas</h1>
     </div>
 
     <div class="container">
@@ -90,24 +97,20 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <!-- Repita este bloco para outras imagens -->
+                <!-- Adicione outras imagens aqui -->
             </div>
             <div class="col-md-4">
-                <!-- Repita este bloco para outras imagens -->
-            </div>
-        </div>
-
-        <div class="card mt-4">
-            <div class="card-body">
-                <h5 class="card-title">Avaliação da Roupa</h5>
-                <button class="btn btn-primary" onclick="enviarAvaliacao()">Enviar Avaliação</button>
-                <p class="mt-3">Saldo: <span id="saldo">R$ 0.00</span></p>
+                <!-- Adicione outras imagens aqui -->
             </div>
         </div>
     </div>
 
-    <div class="text-center mt-4">
-        <button class="saque-btn" onclick="realizarSaque()">Saque Agora</button>
+    <div class="footer">
+        <div class="footer-options">
+            <div class="footer-option">Saque</div>
+            <div class="footer-option">Feedback</div>
+            <div class="footer-option">Ajuda</div>
+        </div>
     </div>
 
     <script>
@@ -129,21 +132,24 @@
             }
         }
 
-        function enviarAvaliacao() {
-            if (!avaliacaoEnviada) {
-                alert("Avaliação enviada! Você ganhou R$20,00.");
-                dinheiro += 20;
-                document.getElementById("saldo").textContent = `R$ ${dinheiro.toFixed(2)}`;
-                avaliacaoEnviada = true;
-            } else {
-                alert("Você já enviou sua avaliação. Aguarde a próxima avaliação para ganhar mais dinheiro.");
-            }
-        }
+        // Lógica de envio de avaliação e atualização do saldo aqui
 
-        function realizarSaque() {
-            // Lógica para saque, redirecionar para a página de saque ou mostrar informações sobre o saque.
-            alert("Saque realizado com sucesso!");
-        }
+        // Funções para lidar com as opções do rodapé
+        const saqueOption = document.querySelector('.footer-option:nth-child(1)');
+        const feedbackOption = document.querySelector('.footer-option:nth-child(2)');
+        const ajudaOption = document.querySelector('.footer-option:nth-child(3)');
+
+        saqueOption.addEventListener('click', function() {
+            alert('Implemente a lógica para saque aqui.');
+        });
+
+        feedbackOption.addEventListener('click', function() {
+            alert('Implemente a lógica para feedback aqui.');
+        });
+
+        ajudaOption.addEventListener('click', function() {
+            alert('Implemente a lógica para ajuda aqui.');
+        });
     </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
