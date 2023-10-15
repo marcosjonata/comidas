@@ -7,71 +7,18 @@
     <title>Avaliação de Roupas Shein</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 0;
-        }
-
-        .header {
-            background-color: #ec5252;
-            color: #ffffff;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        .container {
-            margin-top: 50px;
-        }
-
-        .image-card {
-            width: 200px;
-            margin: 20px;
-            cursor: pointer;
-        }
-
-        .stars span {
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        .stars span.star-checked {
-            color: #ffc107;
-        }
-
-        .comment-box {
-            margin-top: 20px;
-        }
-
-        #comentario {
-            width: 100%;
-            height: 150px;
-        }
-
-        .footer {
-            background-color: #343a40;
-            color: #ffffff;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        .footer-options {
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .footer-option {
-            cursor: pointer;
-        }
+        /* Estilos CSS aqui */
     </style>
 </head>
 
 <body>
     <div class="header">
+        <span class="menu-icon" onclick="toggleMenu()">&#9776; Menu</span>
+        <div class="menu-dropdown" id="menuDropdown">
+            <a href="#">Saque</a>
+            <a href="#">Feedback</a>
+            <a href="#">Ajuda</a>
+        </div>
         <h1>Shein - Avaliação de Roupas</h1>
     </div>
 
@@ -79,7 +26,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="image-card">
-                    <img src="imagem1.jpg" class="card-img-top" alt="Roupa 1">
+                    <img src="IMG_2204.jpeg" class="card-img-top" alt="Roupa 1">
                     <div class="card-body">
                         <h5 class="card-title">Roupa 1</h5>
                         <div class="stars">
@@ -96,24 +43,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <!-- Adicione outras imagens aqui -->
-            </div>
-            <div class="col-md-4">
-                <!-- Adicione outras imagens aqui -->
-            </div>
-        </div>
-    </div>
-
-    <div class="footer">
-        <div class="footer-options">
-            <div class="footer-option">Saque</div>
-            <div class="footer-option">Feedback</div>
-            <div class="footer-option">Ajuda</div>
+            <!-- Adicione outras imagens aqui -->
         </div>
     </div>
 
     <script>
+        function toggleMenu() {
+            const menuDropdown = document.getElementById("menuDropdown");
+            menuDropdown.style.display = (menuDropdown.style.display === "block") ? "none" : "block";
+        }
+
         let dinheiro = 0;
         let avaliacaoEnviada = false;
 
@@ -133,23 +72,6 @@
         }
 
         // Lógica de envio de avaliação e atualização do saldo aqui
-
-        // Funções para lidar com as opções do rodapé
-        const saqueOption = document.querySelector('.footer-option:nth-child(1)');
-        const feedbackOption = document.querySelector('.footer-option:nth-child(2)');
-        const ajudaOption = document.querySelector('.footer-option:nth-child(3)');
-
-        saqueOption.addEventListener('click', function() {
-            alert('Implemente a lógica para saque aqui.');
-        });
-
-        feedbackOption.addEventListener('click', function() {
-            alert('Implemente a lógica para feedback aqui.');
-        });
-
-        ajudaOption.addEventListener('click', function() {
-            alert('Implemente a lógica para ajuda aqui.');
-        });
     </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
