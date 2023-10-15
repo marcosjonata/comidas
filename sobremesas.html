@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avaliação de Roupas Shein</title>
     <style>
-        /* Estilos do seu fundo e outros estilos, se necessário */
         body {
             font-family: Arial, sans-serif;
             background-color: black;
@@ -22,9 +21,6 @@
             padding: 20px;
             font-size: 36px;
             font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .decoracao {
@@ -34,6 +30,12 @@
 
         .decoracao span {
             margin-right: 10px;
+        }
+
+        .saldo {
+            color: yellow;
+            font-weight: bold;
+            font-size: 18px;
         }
 
         .avaliacao-container {
@@ -52,12 +54,6 @@
         .avaliacao {
             font-size: 18px;
             margin: 10px 0;
-        }
-
-        .dinheiro {
-            color: yellow;
-            font-weight: bold;
-            font-size: 24px;
         }
 
         .comentario {
@@ -114,10 +110,10 @@
         <div class="decoracao">
             <span>&#10084;</span>Shein<span>&#9733;</span>
         </div>
+        <p class="saldo" id="saldo">Saldo: R$ 0.00</p>
     </header>
 
     <div class="avaliacao-container">
-        <span class="dinheiro" id="valor">R$ 0.00</span>
         <div class="avaliacao">
             <img class="imagem" src="IMG_2199.jpeg" alt="Roupa 1">
             <div class="texto">
@@ -161,30 +157,32 @@
         function avaliar(estrelas) {
             if (!avaliacaoEnviada) {
                 // Muda a cor das estrelas clicadas
-                for (let i = 1; i <= 5; i++) {
-                    const estrela = document.querySelector(`.estrela:nth-child(${i})`);
-                    if (i <= estrelas) {
-                        estrela.classList.add("estrela-clicada");
-                    } else {
-                        estrela.classList.remove("estrela-clicada");
-                    }
-                }
-            } else {
-                alert("Você já enviou sua avaliação. Aguarde a próxima avaliação para ganhar mais dinheiro.");
-            }
-        }
+                for (let i = 1;i <= 5; i++) {
+const estrela = document.querySelector(.estrela:nth-child(${i}));
+if (i <= estrelas) {
+estrela.classList.add(“estrela-clicada”);
+} else {
+estrela.classList.remove(“estrela-clicada”);
+}
+}
+} else {
+alert(“Você já enviou sua avaliação. Aguarde a próxima avaliação para ganhar mais dinheiro.”);
+}
+}
 
-        function enviarAvaliacao() {
-            if (!avaliacaoEnviada) {
-                alert("Avaliação enviada! Você ganhou R$20,00.");
-                dinheiro += 20;
-                document.getElementById("valor").textContent = `R$ ${dinheiro.toFixed(2)}`;
-                avaliacaoEnviada = true;
-            } else {
-                alert("Você já enviou sua avaliação. Aguarde a próxima avaliação para ganhar mais dinheiro.");
-            }
+    function enviarAvaliacao() {
+        if (!avaliacaoEnviada) {
+            alert("Avaliação enviada! Você ganhou R$20,00.");
+            dinheiro += 20;
+            document.getElementById("saldo").textContent = `Saldo: R$ ${dinheiro.toFixed(2)}`;
+            avaliacaoEnviada = true;
+        } else {
+            alert("Você já enviou sua avaliação. Aguarde a próxima avaliação para ganhar mais dinheiro.");
         }
-    </script>
+    }
+</script>
+
 </body>
+
 
 </html>
