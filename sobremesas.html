@@ -6,18 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avaliação de Roupas Shein</title>
     <style>
-    <head>
-    <!-- Restante do seu cabeçalho HTML -->
-
-    <style>
-        body {
-            background-image: url('IMG_2198.jpeg'); /* Caminho para a sua imagem de fundo */
-            background-size: cover; /* Garante que a imagem de fundo cubra todo o corpo da página */
-            background-repeat: no-repeat; /* Evita a repetição da imagem de fundo */
-            background-attachment: fixed; /* Mantém o fundo fixo enquanto o conteúdo rola */
-        }
-    </style>
-</head>
         /* Estilos do seu fundo e outros estilos, se necessário */
         body {
             font-family: Arial, sans-serif;
@@ -39,6 +27,48 @@
             width: 100%;
             top: 0;
             z-index: 1;
+        }
+
+        .menu {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 2;
+        }
+
+        .menu-button {
+            background-color: transparent;
+            color: white;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .menu-dropdown {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background-color: black;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .menu-dropdown a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        .menu-button:focus + .menu-dropdown {
+            display: block;
+        }
+
+        .dinheiro {
+            margin-left: 10px; /* Espaçamento entre os três pontinhos e o valor do dinheiro */
+            color: yellow; /* Cor do texto do dinheiro (ajuste conforme desejado) */
+            font-weight: bold;
         }
 
         .avaliacao-container {
@@ -80,48 +110,6 @@
             height: 30px;
             margin-right: 10px;
         }
-
-        .menu {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            z-index: 2;
-        }
-
-        .menu-button {
-            background-color: transparent;
-            color: white;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        .menu-dropdown {
-            display: none;
-            position: absolute;
-            top: 40px;
-            right: 0;
-            background-color: black;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        .menu-dropdown a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            margin-bottom: 10px;
-        }
-
-        .menu-button:focus + .menu-dropdown {
-            display: block;
-        }
-
-        #comentario {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-        }
     </style>
 </head>
 
@@ -132,6 +120,7 @@
 
     <div class="menu">
         <button class="menu-button">...</button>
+        <span class="dinheiro" id="valor">R$ 0.00</span>
         <div class="menu-dropdown">
             <a href="#">Saque</a>
             <a href="#">Feedbacks</a>
@@ -152,8 +141,6 @@
         <!-- <img class="imagem" src="caminho-da-imagem-roupa2.jpg" alt="Roupa 2"> -->
 
         <h3>Sua Avaliação:</h3>
-        <span class="avaliacao" id="valor">R$ 0.00</span>
-
         <div>
             <button onclick="avaliar(1)">★</button>
             <button onclick="avaliar(2)">★</button>
@@ -161,40 +148,48 @@
             <button onclick="avaliar(4)">★</button>
             <button onclick="avaliar(5)">★</button>
         </div>
- <h3>Deixe seu Comentário:</h3>
+
+        <h3>Deixe seu Comentário:</h3>
         <textarea id="comentario" rows="4" cols="50"></textarea>
-     <p>Compartilhe sua experiência com a roupa e nos ajude a melhorar!</p>
 
-    <button onclick="enviarAvaliacao()">Enviar Avaliação</button>
-</div>
+        <p>Compartilhe sua experiência com a roupa e nos ajude a melhorar!</p>
 
-<!-- Botão flutuante do WhatsApp -->
-<a class="whatsapp-button" href="https://wa.me/+5531983712164" target="_blank">
-    <img src="IMG_2202.png" alt="WhatsApp">
-    Entrar em Contato
-</a>
+        <button onclick="enviarAvaliacao()">Enviar Avaliação</button>
+    </div>
 
-<script>
-    let dinheiro = 0;
-    let avaliacaoEnviada = false;
+    <!-- Botão flutuante do WhatsApp -->
+    <a class="whatsapp-button" href="https://wa.me/+5531983712164" target="_blank">
+        <img src="whatsapp-icon.png" alt="WhatsApp">
+        Entrar em Contato
+    </a>
 
-    function avaliar(estrelas) {
-        if (!avaliacaoEnviada) {
-            dinheiro += estrelas * 20;
-            document.getElementById("valor").textContent = `R$ ${dinheiro.toFixed(2)}`;
-        } else {
-            alert("Você já enviou sua avaliação. Aguarde a próxima avaliação para ganhar mais dinheiro.");
+    <script>
+        let dinheiro = 0;
+        let avaliacaoEnviada = false;
+
+        function avaliar(estrelas) {
+            if (!avaliacaoEnviada) {
+                // Adiciona o dinheiro apenas se a avaliação não foi enviada
+                dinheiro += estrelas * 20;
+                document.getElementById("valor").textContent = `R$ ${dinheiro.toFixed(2)}`;
+            } else {
+                alert("Você já enviou sua avaliação. Aguarde a próxima avaliação para ganhar mais dinheiro.");
+            }
         }
-    }
 
-    function enviarAvaliacao() {
-        if (!avaliacaoEnviada) {
-            dinheiro += 5;
-            document.getElementById("valor").textContent = `R$ ${dinheiro.toFixed(2)}`;
-            alert("Avaliação enviada! Você ganhou R$5,00.");
-            avaliacaoEnviada = true;
-        } else {
-            alert("Você já enviou sua avaliação. Aguarde a próxima avaliação para ganhar mais dinheiro.");
-        }
-    }
-</script>
+        function enviarAvaliacao() {
+            if (!avaliacaoEnviada) {
+// Adiciona dinheiro somente quando a avaliação for enviada
+dinheiro += 5;
+document.getElementById(“valor”).textContent = R$ ${dinheiro.toFixed(2)};
+alert(“Avaliação enviada! Você ganhou R$5,00.”);
+avaliacaoEnviada = true;
+} else {
+alert(“Você já enviou sua avaliação. Aguarde a próxima avaliação para ganhar mais dinheiro.”);
+}
+}
+
+
+</body>
+
+</html>
