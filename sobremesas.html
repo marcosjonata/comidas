@@ -1,37 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avaliação de Compras Shein</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('fundo.jpg'); /* Substitua 'fundo.jpg' pelo caminho da sua imagem de fundo */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        #avaliacao-container {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        #avaliacao-texto {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .estrela {
+            color: #f3c035;
+            font-size: 36px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .estrela:hover {
+            transform: scale(1.2);
+        }
+
+        #quantia {
+            font-size: 28px;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        let quantia = 0;
+
+        function avaliar(estrelas) {
+            quantia += estrelas;
+            document.getElementById("quantia").textContent = `Você ganhou: R$ ${quantia.toFixed(2)}`;
+        }
+    </script>
 </head>
 
 <body>
-    <h1>Avalie sua Compra na Shein</h1>
-    <p>Por favor, nos dê sua opinião sobre sua experiência de compra na Shein.</p>
+    <div id="avaliacao-container">
+        <div id="avaliacao-texto">Avalie sua compra na Shein:</div>
+        <div>
+            <span class="estrela" onclick="avaliar(1)">★</span>
+            <span class="estrela" onclick="avaliar(2)">★</span>
+            <span class="estrela" onclick="avaliar(3)">★</span>
+            <span class="estrela" onclick="avaliar(4)">★</span>
+            <span class="estrela" onclick="avaliar(5)">★</span>
+        </div>
+        <div id="quantia">Você ganhou: R$ 0.00</div>
+    </div>
 
-    <form action="processar-avaliacao.php" method="POST">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required><br><br>
+    <!-- Seu código para inserir as imagens das roupas aqui -->
 
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email" required><br><br>
-
-        <label for="avaliacao">Avaliação:</label>
-        <select id="avaliacao" name="avaliacao" required>
-            <option value="excelente">Excelente</option>
-            <option value="bom">Bom</option>
-            <option value="regular">Regular</option>
-            <option value="ruim">Ruim</option>
-        </select><br><br>
-
-        <label for="comentario">Comentário:</label><br>
-        <textarea id="comentario" name="comentario" rows="4" cols="50" required></textarea><br><br>
-
-        <input type="submit" value="Enviar Avaliação">
-    </form>
 </body>
 
 </html>
